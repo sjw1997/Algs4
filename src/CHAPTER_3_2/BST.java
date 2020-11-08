@@ -263,9 +263,9 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
         int cmp = key.compareTo(x.key);
         if (cmp < 0) {
-            return delete(x.left, key);
+            x.left = delete(x.left, key);
         } else if (cmp > 0) {
-            return delete(x.right, key);
+            x.right = delete(x.right, key);
         } else {
             if (x.right == null) {
                 return x.left;
@@ -277,9 +277,9 @@ public class BST<Key extends Comparable<Key>, Value> {
             x = min(t.right);
             x.right = deleteMin(t.right);
             x.left = t.left;
-            x.size = size(x.left) + size(x.right) + 1;
-            return x;
         }
+        x.size = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
     public Iterable<Key> keys() {

@@ -46,10 +46,10 @@ public class Heap {
     }
 
     public static void main(String[] args) {
-        Double[] a = new Double[10];
-        for (int i = 0; i < a.length; i++) {
-            a[i] = StdRandom.uniform();
-        }
+        Double[] a = new Double[]{0.5, 0.3, 0.9, 0.94};
+//        for (int i = 0; i < a.length; i++) {
+//            a[i] = StdRandom.uniform();
+//        }
         Heap.sort(a);
         for (int i = 0; i < a.length; i++) {
             StdOut.println(a[i]);

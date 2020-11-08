@@ -1,5 +1,6 @@
 package CHAPTER_2_3;
 
+import edu.princeton.cs.algs4.Merge;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Quick {
