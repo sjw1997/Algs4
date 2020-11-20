@@ -50,7 +50,7 @@ public class Heap {
 //        for (int i = 0; i < a.length; i++) {
 //            a[i] = StdRandom.uniform();
 //        }
-        Heap.sort(a);
+        sort(a);
         for (int i = 0; i < a.length; i++) {
             StdOut.println(a[i]);
         }

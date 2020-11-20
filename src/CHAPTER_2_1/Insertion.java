@@ -24,6 +24,18 @@ public class Insertion {
         }
     }
 
+    public static void sort(int[] a) {
+        int N = a.length;
+        for (int i = 1; i < N; i++) {
+            int j = i, key = a[j];
+            while (j > 0 && key > a[j - 1]) {
+                a[j] = a[j - 1];
+                j--;
+            }
+            a[j] = key;
+        }
+    }
+
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -32,6 +44,14 @@ public class Insertion {
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {10, 9, 8, 7, 4, 12, 4};
+        sort(a);
+        for (int num : a) {
+            System.out.println(num);
+        }
     }
 
 }

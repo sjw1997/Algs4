@@ -12,7 +12,7 @@ public class Merge {
         if (hi <= lo) {
             return;
         }
-        int mid = (lo + hi) / 2;
+        int mid = lo + (hi - lo) / 2;
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
         if (less(a[mid + 1], a[mid])) {    // test whether the array is already order
@@ -27,18 +27,26 @@ public class Merge {
         }
         for (int k = lo; k <= hi; k++) {
             if (i > mid) {
-                a[k] = a[j++];
+                a[k] = aux[j++];
             } else if (j > hi) {
-                a[k] = a[i++];
-            } else if (less(a[i], a[j])) {
-                a[k] = a[i++];
+                a[k] = aux[i++];
+            } else if (less(aux[i], aux[j])) {
+                a[k] = aux[i++];
             } else {
-                a[k] = a[j++];
+                a[k] = aux[j++];
             }
         }
     }
 
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
+    }
+
+    public static void main(String[] args) {
+        Integer[] a = {10, 3, 2, 1, 5, 34, 56, 126};
+        sort(a);
+        for (int num : a) {
+            System.out.println(num);
+        }
     }
 }

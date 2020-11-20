@@ -55,4 +55,12 @@ public class Quick {
         a[i] = a[j];
         a[j] = t;
     }
+
+    public static void main(String[] args) {
+        Integer[] a = {10,3, 45, 12, 45, 1, 4, 5,2};
+        sort(a);
+        for (int num : a) {
+            System.out.println(num);
+        }
+    }
 }
