@@ -2,6 +2,9 @@ package CHAPTER_5_3;
 
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class KMP {
     private String pat;
     private int[][] dfa;
@@ -25,7 +28,7 @@ public class KMP {
         // Simulation operation of DFA on txt
         int j, M = pat.length();
         int i, N = pat.length();
-        for (i = 0, j = 0; i < N; i++) {
+        for (i = 0, j = 0; i < N && j < M; i++) {
             j = dfa[txt.charAt(i)][j];
         }
         if (j == M) {   // found (hit end of pattern)
@@ -35,15 +38,44 @@ public class KMP {
         }
     }
 
+    public List<Integer> searchAll(String txt) {
+        List<Integer> lst = new LinkedList<>();
+        int offset = search(txt, 0);
+        int n = txt.length();
+        while (offset != n) {
+            lst.add(offset);
+            offset = search(txt, offset + 1);
+        }
+        return lst;
+    }
+
+    public int count(String txt) {
+        return searchAll(txt).size();
+    }
+
+    private int search(String txt, int lo) {
+        int j, M = pat.length();
+        int i, N = txt.length();
+        for (i = lo, j = 0; i < N && j < M; i++) {
+            j = dfa[txt.charAt(i)][j];
+        }
+        if (j == M) {
+            return i - M;
+        } else {
+            return N;
+        }
+    }
+
     public static void main(String[] args) {
         String pat = args[0], txt = args[1];
         KMP kmp = new KMP(pat);
         StdOut.println("txt:     " + txt);
-        StdOut.print("pattern: ");
-        int offset = kmp.search(txt);
-        for (int i = 0; i < offset; i++) {
-            StdOut.print(" ");
+        for (int offset : kmp.searchAll(txt)) {
+            StdOut.print("pattern: ");
+            for (int i = 0; i < offset; i++) {
+                StdOut.print(" ");
+            }
+            StdOut.println(pat);
         }
-        StdOut.print(pat);
     }
 }
