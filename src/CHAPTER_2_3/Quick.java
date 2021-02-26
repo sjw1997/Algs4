@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdRandom;
 public class Quick {
 
     public static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);
+        //StdRandom.shuffle(a);
         sort(a, 0, a.length - 1);
     }
 
@@ -57,7 +57,7 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-        Integer[] a = {10,3, 45, 12, 45, 1, 4, 5,2};
+        Integer[] a = {0, 0, 1, 3, 4, 5, 0, 7, 6, 7};
         sort(a);
         for (int num : a) {
             System.out.println(num);
